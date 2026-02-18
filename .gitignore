@@ -15,6 +15,7 @@ venv/
 env/
 dist/
 *.egg-info/
+*.db
 
 # Node / Bun
 node_modules/
