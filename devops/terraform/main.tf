@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "pipeline-tfstate"
+    bucket = "pipeline-tfstate-1"
     key    = "pipeline/terraform.tfstate"
     region = "us-east-1"
   }

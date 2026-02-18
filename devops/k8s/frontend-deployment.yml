@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: pipeline-frontend:latest
+        image: shahryar371/pipeline-frontend:latest
         ports:
         - containerPort: 3000
         resources:
