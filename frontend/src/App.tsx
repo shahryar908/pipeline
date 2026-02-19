@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import axios from "axios"
 
-const API = import.meta.env.VITE_API_URL ?? "http://localhost:8000"
+const API = process.env.VITE_API_URL || "http://localhost:8000"
 
 function Dashboard({ email, onLogout }: { email: string; onLogout: () => void }) {
   return (
