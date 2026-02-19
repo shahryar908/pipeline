@@ -47,7 +47,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pipeline-frontend:latest
           build-args: |
-            VITE_API_URL=${{ secrets.ELB_URL }}/api
+            VITE_API_URL=/api
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
