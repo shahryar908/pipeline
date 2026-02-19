@@ -6,5 +6,5 @@ metadata:
 data:
   ALGORITHM: "HS256"
   ACCESS_TOKEN_EXPIRE_MINUTES: "30"
-  ALLOWED_ORIGINS: "http://pipeline.local"
-  VITE_API_URL: "http://pipeline.local/api"
+  ALLOWED_ORIGINS: "http://a51a3db75bd104d82b0d61c06b7d84de-f5c5df4226e07fd7.elb.us-east-1.amazonaws.com"
+  VITE_API_URL: "http://a51a3db75bd104d82b0d61c06b7d84de-f5c5df4226e07fd7.elb.us-east-1.amazonaws.com/api"

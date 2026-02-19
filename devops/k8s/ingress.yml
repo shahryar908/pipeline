@@ -8,8 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: pipeline.local
-    http:
+  - http:
       paths:
         - path: /api
           pathType: Prefix
