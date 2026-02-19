@@ -47,9 +47,11 @@ async def get_db(request: Request) -> Prisma:
 
 app = FastAPI(lifespan=lifespan)
 
+ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -84,7 +86,7 @@ async def login(req: SigninRequest, db: Prisma = Depends(get_db)):
     token = create_access_token(user.id, user.email)
     return {"message": "Login successful", "access_token": token, "token_type": "bearer"}
 
-@app.get ("/users")
+@app.get("/users")
 async def get_users(db: Prisma = Depends(get_db)):
     users = await db.user.find_many()
-    return {"users": [{"id": user.id, "email": user.email,"password": user.password} for user in users]}
+    return {"users": [{"id": user.id, "email": user.email} for user in users]}

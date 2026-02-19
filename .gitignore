@@ -1,3 +1,6 @@
+# Kubernetes secrets
+devops/k8s/secret.yml
+
 # Terraform
 devops/terraform/.terraform/
 devops/terraform/*.tfstate

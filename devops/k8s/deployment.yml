@@ -12,6 +12,10 @@ spec:
     metadata:
       labels:
         app: backend
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
       - name: backend
@@ -39,6 +43,11 @@ spec:
             configMapKeyRef:
               name: pipeline-config
               key: ACCESS_TOKEN_EXPIRE_MINUTES
+        - name: ALLOWED_ORIGINS
+          valueFrom:
+            configMapKeyRef:
+              name: pipeline-config
+              key: ALLOWED_ORIGINS
         resources:
           requests:
             cpu: "100m"
