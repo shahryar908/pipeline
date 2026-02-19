@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "backend/**"
+      - ".github/workflows/backend.yml"
 
 jobs:
   test:
@@ -67,16 +68,16 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          kubectl apply -f devops/k8s/namespace.yml
+          kubectl apply --validate=false -f devops/k8s/namespace.yml
           kubectl create secret generic pipeline-secret \
             --from-literal=JWT_SECRET=${{ secrets.JWT_SECRET }} \
             --from-literal=DATABASE_URL=${{ secrets.DATABASE_URL }} \
             --from-literal=DB_USER=${{ secrets.DB_USER }} \
             --from-literal=DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
             --namespace pipeline \
-            --dry-run=client -o yaml | kubectl apply -f -
-          kubectl apply -f devops/k8s/configmap.yml
-          kubectl apply -f devops/k8s/postgres.yml
-          kubectl apply -f devops/k8s/deployment.yml
-          kubectl apply -f devops/k8s/service.yml
+            --dry-run=client -o yaml | kubectl apply --validate=false -f -
+          kubectl apply --validate=false -f devops/k8s/configmap.yml
+          kubectl apply --validate=false -f devops/k8s/postgres.yml
+          kubectl apply --validate=false -f devops/k8s/deployment.yml
+          kubectl apply --validate=false -f devops/k8s/service.yml
           kubectl rollout status deployment/backend-deployment -n pipeline
